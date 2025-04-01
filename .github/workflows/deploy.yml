@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    
+    steps:
+      - name: Download artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: build.yml
+          workflow_conclusion: success
+          name: build-artifact
+          path: C:\Temp\Deploy
+          allow_forks: true
+
+      - name: Deploy
+        run: |
+          Remove-Item -Recurse -Force C:\Users\X024438\IIS\net8\* -ErrorAction SilentlyContinue
+          Start-Sleep -s 5
+          Move-Item -Path C:\Temp\Deploy\* -Destination C:\Users\X024438\IIS\net8 -Force
+        shell: pwsh
