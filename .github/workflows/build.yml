@@ -1,0 +1,40 @@
+name: Build
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches: [ "main", "develop", "feature/**", "fix/**", "refactor/**" ]
+    paths-ignore:
+      - '**.md'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [ "main", "develop" ]
+    paths-ignore:
+      - '**.md'
+      - '.github/workflows/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configurar .NET 8
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore packages
+        run: dotnet restore
+
+      - name: Compile and publish
+        run: dotnet publish -c Release -o output
+
+      - name: Upload artifact 
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: output
