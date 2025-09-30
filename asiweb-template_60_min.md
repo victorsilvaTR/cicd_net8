@@ -7,7 +7,7 @@
 
 ### Contexto del proyecto
 
-**Situación inicial:** Existe una aplicación legacy que gestiona las licencias de software de los productos HyperRenta. Esta aplicación fue desarrollada con tecnologías antiguas. Se solicitó hacer un upgrade tecnológico manteniendo las funcionalidades, mejorandolas y agregando nuevas.
+**Situación inicial:** Existe una aplicación legacy que gestiona las licencias de software de los productos HyperRenta. Esta aplicación fue desarrollada con tecnologías antiguas. Se solicitó hacer un upgrade tecnológico manteniendo las funcionalidades, mejorándolas y agregando nuevas.
 
 **Solución:** Modernización tecnológica en una nueva aplicación .NET 8 que:
 - **Mantiene** todas las funcionalidades core del sistema legacy (activación de licencias, gestión de claves)
